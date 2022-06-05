@@ -1,0 +1,76 @@
+.main-order{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 60px;
+}
+.order{
+    display: flex; 
+    width: 50%;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.order-product{
+    width: 100%;
+    padding: 1.5em;
+    margin: 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid black;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    text-align: center;
+}
+.section-order{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+.arrow{
+    right: 0;
+    text-decoration:none;
+}
+.arrow-reverse{
+    right: 0;
+    transform: rotate(180deg);
+    text-decoration:none;
+}
+.order-amount{
+    align-self: flex-end;
+}
+.section-order-products{
+    display: flex;
+    padding-top: 1em;
+    flex-direction: row-reverse;
+    width: 100%;
+}
+.products{
+    text-align: center;
+    justify-self: center;
+    right: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0.5em;
+    margin: 0.5em;
+}
+.section-products{
+    border: 2px solid black;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.5em;
+    margin: 0.5em;
+}
