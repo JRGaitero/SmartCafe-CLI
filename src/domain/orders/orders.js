@@ -1,31 +1,44 @@
 import React from "react";
 import OrderComponent from "../../components/order/order";
+import axios from "axios";
+import { useState } from "react";
+import { useEffect } from "react";
 
-const mockOrder = {
-    id: 1,
-    student_id: 1,
-    amount : 4.99,
-    date: '22/05/2022',
-    is_completed: false,
-    payment_info: ""
-}
-
-const mockOrders = []
 const Orders = () =>{
     
-    for(let i = 0; i<15;i++){
-        mockOrders.push(mockOrder)
+    const [orders, setorders] = useState({});
+    const [loanding, setloanding] = useState(true);
+
+    const getProducts = async () =>{
+        let config = {
+            headers: {
+                  'Authorization': 'Bearer ' + "1|FDZGRRQGXNyeb7wsBmgsz7zEikSfYEFn9lHdZQbw"
+            }
+        }
+        await axios.get(`http://localhost:/api/cafes/1/orders`,config)
+        .then(res => {
+            setorders(res.data)
+            setloanding(false)
+        })
     }
+    
+    useEffect(() => {
+       getProducts()
+    }, [console.log(orders)]);
     return(
         <>
-        <main className="main-order">
-        <link rel="stylesheet" href="css/order.css"></link>
-            <section className="order">
-                {mockOrders.map((item, index)=>
-                    <OrderComponent key={index} props ={item}/>
-                )}
-            </section>    
-        </main>
+        {loanding ? 
+            <div>cargando</div>
+            :
+            <main className="main-order">
+            <link rel="stylesheet" href="css/order.css"></link>
+                <section className="order">
+                    {orders.map((item, index)=>
+                        <OrderComponent key={index} props ={item}/>
+                    )}
+                </section>    
+            </main>
+        }
         </>
     )
 };

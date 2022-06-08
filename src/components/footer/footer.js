@@ -6,6 +6,8 @@ import { AiOutlineCoffee } from "react-icons/ai";
 
 import Orders  from "../../domain/orders/orders";
 import Settings from "../../domain/settings/settings";
+import Products  from "../../domain/products/products";
+
 
 const Footer = () =>{
 
@@ -21,7 +23,9 @@ const Footer = () =>{
                         </Link>
                         </ol>
                         <ol className="footer-icon">
+                        <Link to="/products">
                             <AiOutlineCoffee></AiOutlineCoffee>
+                        </Link>
                         </ol>
                         <ol className="footer-icon">
                         <Link to="/settings">
@@ -34,7 +38,8 @@ const Footer = () =>{
         <Routes>
                     <Route path="/orders" element={<Orders />}/>
                     <Route path="/settings" element={<Settings />}/>
-                </Routes>    
+                    <Route path="/products" element={<Products />}/>
+                    </Routes>    
             </Router>
     )
 };

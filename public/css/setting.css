@@ -1,0 +1,195 @@
+.main-settings{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 60px;
+}
+.setting-component-password{
+    width: 60%;
+    padding: 0.5em;
+    height: 300px;
+
+
+}
+.input-password{
+    font-size: 1.5em;
+    flex-direction: column;
+    border: 2px solid black;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 0.5em;
+}
+.setting-component-image{
+
+}
+.input-image{
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+.setting-component{
+    width: 60%;
+    padding: 0.5em;
+}
+.pencil{
+    font-size: 1.5em;
+    text-align: center;
+    align-self: center;
+    margin-right: 5px;
+}
+
+.submit-pencil{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+.section-password-cambiar{
+    border-bottom:2px solid black ;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.5em;
+
+}
+.button-password{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+    width: 100%;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    border-top:2px solid black ;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.5em;
+}
+.section-password-button{
+  
+
+}
+.section-both-password{
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 60%;
+    height: 100%;
+    text-align: center;
+}
+.form-contraseña{
+    border: 2px solid black;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+}
+.input-name{
+    font-size: 1.5em;
+    text-align: center;
+    align-self: center;
+    width: 50%;
+}
+.input{
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: column;
+    border-left: 2px solid black;
+    border-bottom: none;
+    border-top: none;
+    border-right: none;
+    text-align: center;
+
+}
+.input-image{
+    top:0;
+    bottom: 0;
+    height: 100%;
+    border-left: 2px solid black;
+    border-bottom: none;
+    border-top: none;
+    border-right: none;
+    text-align: center;
+
+}
+.form{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 2px solid black;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-align: center;
+}
+
+.settings{
+    display: flex; 
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+@media (max-width:800px){
+    .setting-component {
+        width: 80%;
+        padding: 0.5em;
+    }
+    .setting-component-password {
+        width: 80%;
+        padding: 0.5em;
+    }
+}
+@media (max-width:625px){
+    .setting-component {
+        width: 100%;
+        padding: 0.5em;
+    }
+    .setting-component-password {
+        width: 100%;
+        padding: 0.5em;
+    }
+    .pencil {
+        font-size: 1.25em;
+        text-align: center;
+        align-self: center;
+        margin-right: 5px;
+    }
+    .input-name {
+        font-size: 1.25em;
+        text-align: center;
+        align-self: center;
+        width: 30%;
+    }
+    .input {
+        font-size: 1em;
+        display: flex;
+        flex-direction: column;
+        border-left: 2px solid black;
+        border-bottom: none;
+        border-top: none;
+        border-right: none;
+        text-align: center;
+        width: 50%;
+    }
+    
+}
