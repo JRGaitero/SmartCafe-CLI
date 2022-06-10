@@ -1,8 +1,15 @@
 import React from "react";
 import ProductComponent from "../../components/product/product";
 import axios from "axios";
+import NewProduct from  "../../components/product/newProduct";
+import Header from '../../components/header/header';
+import Footer from '../../components/footer/footer';
 import { useState } from "react";
 import { useEffect } from "react";
+import { Navigate } from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
+
+
 
 const Products = () =>{
     
@@ -13,27 +20,37 @@ const Products = () =>{
     const getProducts = async () =>{
         let config = {
             headers: {
-                  'Authorization': 'Bearer ' + "1|FDZGRRQGXNyeb7wsBmgsz7zEikSfYEFn9lHdZQbw"
+                  'Authorization': 'Bearer ' + localStorage.getItem("token")
             }
         }
         await axios.get(`http://localhost:/api/cafes/1/products`,config)
         .then(res => {
             setProducts(res.data)
             setloanding(false)
+        }).catch(err=>{
+            console.log(err);
+            localStorage.removeItem("token");
+            window.location.href="http://localhost:3000/auth";
+
         })
     }
     
     useEffect(() => {
        getProducts()
     }, [console.log(products)]);
-    
+
+    if(localStorage.getItem("token")===null){
+        window.location.href="http://localhost:3000/auth";
+    }
         return(
             <>
+            <Header />
             {loanding ? 
             <div>cargando</div>
             :
             <main className="main-product">
             <link rel="stylesheet" href="css/product.css"></link>
+            <NewProduct></NewProduct>
                 <section className="product">
                     
                 {
@@ -43,6 +60,8 @@ const Products = () =>{
                 }
                 </section>    
             </main>}
+            <Footer />
+
             </>
         );
 
