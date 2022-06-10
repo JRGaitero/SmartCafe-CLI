@@ -10,16 +10,17 @@ import { Navigate } from "react-router-dom";
 
 const Orders = () =>{
     
-    const [orders, setorders] = useState({});
+    const [orders, setorders] = useState([]);
     const [loanding, setloanding] = useState(true);
 
     const getProducts = async () =>{
+        //metodo para obetner los pedidos asiociados a un cafe
         let config = {
             headers: {
                   'Authorization': 'Bearer ' + localStorage.getItem("token")
             }
         }
-        await axios.get(`http://localhost:/api/cafes/1/orders`,config)
+        await axios.get(`http://localhost:/api/cafes/${localStorage.getItem("cafe_id")}/orders`,config)
         .then(res => {
             setorders(res.data)
             setloanding(false)
@@ -27,8 +28,11 @@ const Orders = () =>{
             console.log(err)
             localStorage.removeItem("token")
             localStorage.removeItem("cafe_id");
-            return <Navigate to='/Auth' replace={true} />;
+            localStorage.removeItem("name");
+            localStorage.removeItem("is_open");
+            localStorage.removeItem("location");
 
+            window.location.href = "http://localhost:3000/auth";
         })
     }
     
@@ -41,11 +45,15 @@ const Orders = () =>{
     return(
         <>            
         <Header />
+        <link rel="stylesheet" href="css/order.css"></link>
+
         {loanding ? 
             <div>cargando</div>
             :
+            orders ?
+            <h2 className="no-products">No hay Pedidos todavia</h2>
+            :
             <main className="main-order">
-            <link rel="stylesheet" href="css/order.css"></link>
                 <section className="order">
                     {orders.map((item, index)=>
                         <OrderComponent key={index} props ={item}/>

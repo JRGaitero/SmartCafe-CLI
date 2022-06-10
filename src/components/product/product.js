@@ -5,6 +5,7 @@ const ProductComponent = (props) =>{
     const [product] = React.useState(props.props)
 
     const showProducts = (e) =>{
+        //Metodo para desplegar el producto y asi ver mas informacion de este
         e.stopPropagation()
         e.preventDefault()
         if (e.target.parentNode.parentNode.className!=='section-products-decription'){
@@ -25,7 +26,7 @@ const ProductComponent = (props) =>{
             order.insertAdjacentHTML(
                 "beforeBegin",
                 `<section class='product-description'><p>Categoria: ${product.category}<p>
-                <p>Descripcion: ${product.description}</p><img class='product-image' src=${product.image}></img></section>`
+                <p>Descripcion: ${product.description}</p></section>`
 
             )
         

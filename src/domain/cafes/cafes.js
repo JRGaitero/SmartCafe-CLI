@@ -44,7 +44,9 @@ const Cafes = () => {
           <div>cargando</div>
           :
           <main className="main-cafe">
-            <link rel="stylesheet" href="css/cafe.css"/>
+            <link rel="stylesheet" href="css/cafe-products.css"/>
+            <link rel="stylesheet" href="css/product.css"></link>
+
             <section className="cafes">
               {
                 cafes.map((item, index) => <CafeComponent key={index} props={item}/>)
@@ -52,7 +54,6 @@ const Cafes = () => {
             </section>
           </main>
       }
-      <Footer />
     </>
   )
 

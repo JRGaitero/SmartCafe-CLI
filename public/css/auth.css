@@ -1,0 +1,50 @@
+.main-auth-form{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    width: 1000px;
+    align-content: space-around;
+    justify-content: space-around;
+    height: 600px;
+}
+.form-login{
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    }
+.change-form{
+    list-style:none; 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 60%;
+}
+.form-create-student{
+    display:flex;
+    flex-direction: column;
+}
+.form-create-cafe{
+    display:flex;
+    flex-direction: column;
+}
+@media (max-width:1000px) {
+    .main-auth-form{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        width: 100%;
+    }
+}
+input{
+    background-color: antiquewhite;
+
+}
+select{
+    background-color: antiquewhite;
+
+}
+li:hover{
+    border-bottom: 2px solid black;
+}

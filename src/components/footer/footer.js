@@ -8,6 +8,7 @@ import { AiOutlineCoffee } from "react-icons/ai";
 
 const Footer = () =>{
 
+    //Creacion footer para cafes este redirije a las 3 areaas principales de la aplicacion para cafe
     return(
         <footer className="footer">
             <link rel="stylesheet" href="css/footer.css"></link>

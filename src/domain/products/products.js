@@ -18,19 +18,25 @@ const Products = () =>{
     const [loanding, setloanding] = useState(true);
 
     const getProducts = async () =>{
+        //metodo para obetener los produtos de una cafeteria
         let config = {
             headers: {
                   'Authorization': 'Bearer ' + localStorage.getItem("token")
             }
         }
-        await axios.get(`http://localhost:/api/cafes/1/products`,config)
+        await axios.get(`http://localhost:/api/cafes/${localStorage.getItem("cafe_id")}/products`,config)
         .then(res => {
             setProducts(res.data)
             setloanding(false)
         }).catch(err=>{
             console.log(err);
-            localStorage.removeItem("token");
-            window.location.href="http://localhost:3000/auth";
+            console.log(localStorage.getItem("cafe_id"))
+            localStorage.removeItem("token")
+            localStorage.removeItem("cafe_id");
+            localStorage.removeItem("name");
+            localStorage.removeItem("is_open");
+            localStorage.removeItem("location");
+            window.location.href = "http://localhost:3000/auth";
 
         })
     }
@@ -40,7 +46,7 @@ const Products = () =>{
     }, [console.log(products)]);
 
     if(localStorage.getItem("token")===null){
-        window.location.href="http://localhost:3000/auth";
+        window.location.href = "http://localhost:3000/auth";
     }
         return(
             <>

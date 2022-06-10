@@ -8,6 +8,8 @@ import { AiOutlineArrowDown } from "react-icons/ai";
 
     const getHtmlProducts = (products) => {
 
+        //Metodo para obtener el desplegable de pedidos este muestra una lista de todos los productos de forma unica y un conteno de cuantos de cada
+
         let html = "<section class='products'>"
         let uniqueProducts = []
 
@@ -29,6 +31,7 @@ import { AiOutlineArrowDown } from "react-icons/ai";
     }
 
     const confirmProduct = (e) =>{
+        //Metodo para confirmar un producto para saber que ya se ha realizado
         e.preventDefault()
         const father = e.target.parentNode.parentNode.parentNode
         const child = e.target.parentNode.parentNode
@@ -53,6 +56,7 @@ import { AiOutlineArrowDown } from "react-icons/ai";
         father.removeChild(child)
     } 
     const showProducts = (e) =>{
+        //Metodo para desplegar los productos de los pedidos
         e.stopPropagation()
         e.preventDefault()
        

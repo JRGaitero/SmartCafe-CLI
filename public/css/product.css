@@ -50,6 +50,67 @@
     text-align: center;
 }
 
+.button-new-product{
+    width: 50%;
+    padding: 1.5em;
+    margin: 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid black;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.div-product-form-show{
+    width: 50%;
+    padding: 1.5em;
+    margin: 0.5em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 2px solid black;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.div-product-form-hidden{
+    width: 50%;
+    padding: 1.5em;
+    margin: 0.5em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 2px solid black;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.product-form{
+    display: flex;
+    flex-direction: column;
+}
+.form-product-submit{
+    background-color: antiquewhite;
+
+    width: 30%;
+}
+.form-product-input{
+    background-color: antiquewhite;
+
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+@media(max-width: 850px){
+    .form-product-submit{
+        width: 60%;
+    }
+}
 @media (max-width: 600px){
     .product{
         display: flex; 
@@ -57,5 +118,33 @@
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
+    }
+   
+
+    .button-new-product{
+        width: 100%;
+        padding: 1.5em;
+        margin: 0.5em;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border: 2px solid black;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+    .div-product-form{
+        width: 100%;
+        padding: 1.5em;
+        margin: 0.5em;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border: 2px solid black;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
     }
 }

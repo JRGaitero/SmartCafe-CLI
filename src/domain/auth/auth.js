@@ -7,6 +7,7 @@ import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
 
 
 const Auth = ()=>{
+    //vista para la autentificaion
 
     const [user, setUser] = useState("user");
     const [schools, setSchools] = useState(false);
@@ -29,6 +30,7 @@ const Auth = ()=>{
 
 
     const createCafe = (e) =>{
+        //Metodo para crear un un usuario y un nuevo cafe y guardarlo
         e.preventDefault()
         const student = {}
         let bodyFormData = new FormData();
@@ -54,6 +56,7 @@ const Auth = ()=>{
             bodyFormData.append('name', document.querySelector("#name").value)
             bodyFormData.append('location',document.querySelector("#location").value)
             bodyFormData.append('user_id',res.data.data.id)
+            localStorage.setItem('user_id', res.data.data.id)
             bodyFormData.append('is_open',document.querySelector("#is_open").value)
             axios({
                 method: "post",
@@ -61,14 +64,20 @@ const Auth = ()=>{
                 data: bodyFormData,
                 headers: { "Content-Type": "multipart/form-data",'Authorization': 'Bearer ' + localStorage.getItem("token") },
             }).then(res=>{
-                console.log(res.status);
                 localStorage.setItem("cafe_id",res.data)
+                localStorage.setItem('name', document.querySelector("#name").value)
+                localStorage.setItem('location', document.querySelector("#location").value)
+                localStorage.setItem('is_open', document.querySelector("#is_open").value)
+                localStorage.setItem('password', document.querySelector("#password").value)
+
+
                 window.location.href="http://localhost:3000/products";
 
             })
             })
     }
     const createStudent = (e) =>{
+        //Metodo para crear un un usuario y un nuevo student y guardarlo
         e.preventDefault()
         let bodyFormData = new FormData();
         bodyFormData.append('email', document.querySelector("#email").value)
@@ -85,6 +94,8 @@ const Auth = ()=>{
             data: bodyFormData,
             headers: { "Content-Type": "multipart/form-data" },
           }).then(res=>{
+            console.log(res.data)
+
             localStorage.setItem("token",res.data.access_token)
 
             bodyFormData = new FormData();
@@ -103,10 +114,11 @@ const Auth = ()=>{
                 data: bodyFormData,
                 headers: { "Content-Type": "multipart/form-data",'Authorization': 'Bearer ' + localStorage.getItem("token") },
             }).then(res=>{
-                console.log(res.status);
+                console.log(res.status)
+                localStorage.setItem("name", document.querySelector("#name").value)
                 localStorage.setItem("student_id",res.data)
 
-                window.location.href="http://localhost:3000/products";
+                window.location.href="http://localhost:3000/cafes";
             })
             })
 
@@ -115,6 +127,7 @@ const Auth = ()=>{
     }
 
     const login = (e) =>{
+        //metodo para hacer login
         e.preventDefault()
         let bodyFormData = new FormData();
         bodyFormData.append('email', document.querySelector("#login-email").value)
@@ -127,43 +140,33 @@ const Auth = ()=>{
             headers: { "Content-Type": "multipart/form-data" },
           }).then(res=>{
             localStorage.setItem("token",res.data.access_token);
-            switch (res.data.role) {
-              case 'school':
-                localStorage.setItem("school_id",res.data.id)
-                window.location.href="http://localhost:3000/products"
-                break
-              case 'student':
-                localStorage.setItem("student_id",res.data.id)
-                window.location.href="http://localhost:3000/cafes"
-                break
-              case 'cafe':
-                localStorage.setItem("cafe_id",res.data.id)
-                window.location.href="http://localhost:3000/products"
-                break
-            }
+            window.location.href="http://localhost:3000/products";
+
 
           })
     }
     return(
         <>
+            <link rel="stylesheet" href="css/auth.css"></link>
         {schools ? 
-            <main>
-            <header>
+            <main className="main-auth-form">
+            <header className="auth-headr">
                 <h1>Smart Cafe</h1>
             </header>
-            <section>
+            <section className="auth-login">
+                <h2>login</h2>
                 <form className="form-login" onSubmit={login}>
                     <label htmlFor="login-email">Correo Electronico: <input id="login-email" type="text"></input></label>
                     <label htmlFor="login-password">Contraseña: <input  id="login-password" type="password"></input></label>
                     <input type='submit' value="Enviar" ></input>
                 </form>
             </section>
-            <section>
-            <ul className={"change-form"}>
+            <section className="auth-chageform">
+            <ul  className="change-form">
                 <li>
                     <a onClick={()=>cambiarValor("user")}>Registro Alumno</a>
                 </li>
-                <p>|</p>
+                <p></p>
                 <li>
                     <a onClick={()=>cambiarValor("cafe")} >Registro Cafeteria</a>
                 </li>
@@ -204,7 +207,7 @@ const Auth = ()=>{
                     <h2>
                         Registro Para Cafeteria
                     </h2>
-                    <form onSubmit={createCafe}  encType="multipart/form-data">
+                    <form  className="form-create-cafe" onSubmit={createCafe}  encType="multipart/form-data">
                         <label htmlFor="email">Correo Electronico: <input id="email" type="text"></input></label>
                         <label htmlFor="name">Nombre: <input id="name" type="text"></input></label>
                         <label htmlFor="location">Ubicacion: <input id="location" type="text"></input></label>
