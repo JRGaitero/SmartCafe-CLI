@@ -20,7 +20,6 @@ function App() {
             <Route path="/auth" element={<Auth />}/>
             <Route path="/cafes" element={<Cafes />}/>
             <Route path="*" element={<Navigate to ="/auth" />}/>
-
         </Routes>   
       </Router> 
     </>
