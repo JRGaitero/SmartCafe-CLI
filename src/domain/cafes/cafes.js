@@ -11,6 +11,7 @@ const Cafes = () => {
 
   const [cafes, setCafes] = useState({})
   const [loading, setLoading] = useState(true)
+  const [productMode] = useState('add')
 
   const getCafes = async () => {
     let config = {
@@ -49,11 +50,12 @@ const Cafes = () => {
 
             <section className="cafes">
               {
-                cafes.map((item, index) => <CafeComponent key={index} props={item}/>)
+                cafes.map((item, index) => <CafeComponent key={index} props={item} mode={productMode}/>)
               }
             </section>
           </main>
       }
+      <Footer/>
     </>
   )
 

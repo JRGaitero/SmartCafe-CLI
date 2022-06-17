@@ -10,6 +10,7 @@ import { Navigate } from "react-router-dom";
 import Auth from './domain/auth/auth'
 
 import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
+import ShoppingCart from "./domain/shoppingCart/shoppingCart";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/cafe-products" element={<CafeProducts />}/>
             <Route path="/products" element={<Products />}/>
             <Route path="/auth" element={<Auth />}/>
+            <Route path="/shopping-cart" element={<ShoppingCart/>}/>
             <Route path="*" element={<Navigate to ="/auth" />}/>
         </Routes>   
       </Router> 

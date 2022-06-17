@@ -1,8 +1,34 @@
 import React from "react";
 import { AiOutlineArrowDown } from "react-icons/ai";
+import {BsCart4, BsTrashFill} from "react-icons/bs";
 
 const ProductComponent = (props) =>{
     const [product] = React.useState(props.props)
+    const [mode] = React.useState(props.mode)
+
+    const deleteFromCart = (e) => {
+        e.preventDefault()
+        const indexToRemove = JSON.parse(localStorage.getItem('cart'))
+          .findIndex(product => product.id === props.props.id)
+        const cart = JSON.parse(localStorage.getItem('cart'))
+        cart.splice(indexToRemove, 1)
+        if (cart.length === 0) {
+            localStorage.removeItem('cart')
+        } else {
+            localStorage.setItem('cart',
+              JSON.stringify(cart))
+        }
+        window.dispatchEvent( new Event('storage') )
+    }
+
+    const addToCart = (e) => {
+        if (!localStorage.getItem('cart')) {
+            localStorage.setItem('cart', '[]')
+        }
+        e.preventDefault()
+        localStorage.setItem('cart',
+          JSON.stringify(JSON.parse(localStorage.getItem('cart')).concat(product)))
+    }
 
     const showProducts = (e) =>{
         //Metodo para desplegar el producto y asi ver mas informacion de este
@@ -46,8 +72,22 @@ const ProductComponent = (props) =>{
             </section>
             <section className="section-products-decription">
                 <a href="" onClick={showProducts} className="arrow">               
-                    <AiOutlineArrowDown></AiOutlineArrowDown>
+                    <AiOutlineArrowDown/>
                 </a>
+                {
+                    mode !== null && <div>
+                      {
+                          mode === 'delete' ?
+                              <a href="" onClick={deleteFromCart}>
+                                  <BsTrashFill/>
+                              </a> :
+                              <a href="" onClick={addToCart}>
+                                  <BsCart4/>
+                              </a>
+
+                      }
+                  </div>
+                }
             </section>
         </div>)
 }
