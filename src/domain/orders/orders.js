@@ -12,6 +12,25 @@ const Orders = () =>{
     
     const [orders, setorders] = useState([]);
     const [loanding, setloanding] = useState(true);
+    const [user, setUser] = useState();
+    let tempUser = {}
+
+    const getUser = async ()=>{
+        let config = {
+            headers: {
+                  'Authorization': 'Bearer ' + localStorage.getItem("token")
+            }
+        }
+        await axios.get(`http://localhost:/api/profile`,config)
+        .then(res => { 
+            setUser(res.data[0])
+            tempUser = res.data[0]
+            getProducts()
+        }).catch(err=>{
+            alert("Sesion Caducada")
+            window.location.href = "http://localhost:3000/auth";
+        });
+    }
 
     const getProducts = async () =>{
         //metodo para obetner los pedidos asiociados a un cafe
@@ -26,30 +45,26 @@ const Orders = () =>{
             setloanding(false)
         }).catch(err=>{
             console.log(err)
-            localStorage.removeItem("token")
-            localStorage.removeItem("cafe_id");
-            localStorage.removeItem("name");
-            localStorage.removeItem("is_open");
-            localStorage.removeItem("location");
-
             window.location.href = "http://localhost:3000/auth";
         })
     }
     
     useEffect(() => {
-       getProducts()
-    }, [console.log(orders)]);
+        getUser()
+    }, [console.log()]);
+
     if(localStorage.getItem("token")===null){
         return <Navigate to='/Auth' replace={true} />;
     }
     return(
         <>            
-        <Header />
-        <link rel="stylesheet" href="css/order.css"></link>
-
-        {loanding ? 
+            {loanding ? 
             <div>cargando</div>
             :
+            <>
+            <Header props={user}/>
+            <link rel="stylesheet" href="css/order.css"></link>
+            {
             orders ?
             <h2 className="no-products">No hay Pedidos todavia</h2>
             :
@@ -60,6 +75,9 @@ const Orders = () =>{
                     )}
                 </section>    
             </main>
+            }
+            </>
+            
         }
         <Footer />
         </>

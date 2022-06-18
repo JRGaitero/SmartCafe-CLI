@@ -22,7 +22,7 @@ const Auth = ()=>{
     
     useEffect(() => {
         getSchools()
-    }, [console.log(schools)]);
+    }, [console.log()]);
     
     const cambiarValor = (valor)=>{
         setUser(valor)
@@ -38,7 +38,7 @@ const Auth = ()=>{
         bodyFormData.append('password',document.querySelector("#password").value)
         bodyFormData.append('phoneNumber', document.querySelector("#phoneNumber").value)
         if(document.querySelector("#profile_pic").value){
-            bodyFormData.append('profile_pic', document.querySelector("#profile_pic").value)
+            bodyFormData.append('profile_pic', document.querySelector("#profile_pic").file[0])
         }
         bodyFormData.append('role',document.querySelector("#role").value)
 
@@ -64,11 +64,11 @@ const Auth = ()=>{
                 data: bodyFormData,
                 headers: { "Content-Type": "multipart/form-data",'Authorization': 'Bearer ' + localStorage.getItem("token") },
             }).then(res=>{
-                localStorage.setItem("cafe_id",res.data)
-                localStorage.setItem('name', document.querySelector("#name").value)
-                localStorage.setItem('location', document.querySelector("#location").value)
-                localStorage.setItem('is_open', document.querySelector("#is_open").value)
-                localStorage.setItem('password', document.querySelector("#password").value)
+                //localStorage.setItem("cafe_id",res.data)
+                //localStorage.setItem('name', document.querySelector("#name").value)
+                //localStorage.setItem('location', document.querySelector("#location").value)
+                //localStorage.setItem('is_open', document.querySelector("#is_open").value)
+                //localStorage.setItem('password', document.querySelector("#password").value)
 
 
                 window.location.href="http://localhost:3000/products";
@@ -84,7 +84,7 @@ const Auth = ()=>{
         bodyFormData.append('password',document.querySelector("#password").value)
         bodyFormData.append('phoneNumber', document.querySelector("#phoneNumber").value)
         if(document.querySelector("#profile_pic").value){
-            bodyFormData.append('profile_pic', document.querySelector("#profile_pic").value)
+            bodyFormData.append('profile_pic', document.querySelector("#profile_pic").file[0])
         }
         bodyFormData.append('role',document.querySelector("#role").value)
 
@@ -94,7 +94,6 @@ const Auth = ()=>{
             data: bodyFormData,
             headers: { "Content-Type": "multipart/form-data" },
           }).then(res=>{
-            console.log(res.data)
 
             localStorage.setItem("token",res.data.access_token)
 
@@ -114,9 +113,8 @@ const Auth = ()=>{
                 data: bodyFormData,
                 headers: { "Content-Type": "multipart/form-data",'Authorization': 'Bearer ' + localStorage.getItem("token") },
             }).then(res=>{
-                console.log(res.status)
-                localStorage.setItem("name", document.querySelector("#name").value)
-                localStorage.setItem("student_id",res.data)
+                //localStorage.setItem("name", document.querySelector("#name").value)
+                //localStorage.setItem("student_id",res.data)
 
                 window.location.href="http://localhost:3000/cafes";
             })

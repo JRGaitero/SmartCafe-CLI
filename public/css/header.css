@@ -4,8 +4,8 @@
     margin: 0;
 }
 .header-div{
-    border: 1px black;
     display: flex;
+    height: 100%;
     right: 0;
     left: 0;
     flex-direction: row;
@@ -24,6 +24,7 @@
     align-self: flex-end;
 }
 .header-ul{
+    height: 100%;
     width: 50%;
     align-content: center;
     align-self: center;

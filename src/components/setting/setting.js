@@ -1,30 +1,45 @@
 import React from "react";
 import { BsPencil } from "react-icons/bs";
 import axios from "axios";
-
+import { useState } from "react";
+import { useEffect } from "react";
 
 const SettingComponent = (props) =>{
     const [settings] = React.useState(props.props)
+    const [user, setUser] = useState();
 
-    console.log(settings)
+    const getUser = async ()=>{
+        let config = {
+            headers: {
+                  'Authorization': 'Bearer ' + localStorage.getItem("token")
+            }
+        }
+        await axios.get(`http://localhost:/api/profile`,config)
+        .then(res => { 
+            setUser(res.data[0])
+        }).catch(err=>{
+            alert("Sesion Caducada")
+            window.location.href = "http://localhost:3000/auth";
+        });
+    }
+    useEffect(() => {
+        getUser()
+    }, [console.log()]);
+    
     const cambiarValor = () =>{
         //metodo para cambiar el nombre o la direccion de una cafeteria este metodo comprueba que formulario ha introducido el usuario y cambia el valor
         if (settings.name=="Nombre"){
             const new_name=document.querySelector(`#${settings.name}`).value
-            const user = {}
-            user.name = new_name
-            user.location = localStorage.getItem("location")
-            user.is_open = localStorage.getItem("is_open")
-            console.log(user)
+            const changedUser = {}
+            changedUser.name = new_name
+            changedUser.location = user.location
+            changedUser.is_open =user.is_open
             axios({
                 method: "PUT",
-                url: "http://localhost/api/cafes/"+localStorage.getItem("cafe_id"),
-                data: user,
+                url: "http://localhost/api/cafes/"+user.id,
+                data: changedUser,
                 headers: { "Content-Type": "application/json" , 'Authorization': 'Bearer ' + localStorage.getItem("token")},
               }).then(res=>{
-                console.log(res)
-                localStorage.removeItem("name")
-                localStorage.setItem("name",new_name)
                 window.location.href = "http://localhost:3000/settings";
             }).catch((err)=>{
                 console.log(err)
@@ -32,23 +47,19 @@ const SettingComponent = (props) =>{
         }
         if (settings.name=="Direccion"){
             const new_location=document.querySelector(`#${settings.name}`).value
-            const user = {}
-            user.location = new_location
-            user.name = localStorage.getItem("name")
-            user.is_open = localStorage.getItem("is_open")
-            console.log(user)
+            const changedUser = {}
+            changedUser.name = user.name
+            changedUser.location = new_location
+            changedUser.is_open =user.is_open
             axios({
                 method: "PUT",
                 url: "http://localhost/api/cafes/"+localStorage.getItem("cafe_id"),
-                data: user,
+                data: changedUser,
                 headers: { "Content-Type": "application/json" , 'Authorization': 'Bearer ' + localStorage.getItem("token")},
               }).then(res=>{
-                console.log(res)
-                localStorage.removeItem("location")
-                localStorage.setItem("location",new_location)
                 window.location.href = "http://localhost:3000/settings";
             }).catch((err)=>{
-                console.log(err)
+
             })
         }
     

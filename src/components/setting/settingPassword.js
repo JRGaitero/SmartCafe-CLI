@@ -1,36 +1,56 @@
 import React from "react";
 import axios from "axios";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const SettingComponentPassword = (props) =>{
     const [settings] = React.useState(props.props)
+    const [user, setUser] = useState();
+
+    const getUser = async ()=>{
+        let config = {
+            headers: {
+                  'Authorization': 'Bearer ' + localStorage.getItem("token")
+            }
+        }
+        await axios.get(`http://localhost:/api/profile`,config)
+        .then(res => { 
+            setUser(res.data[0])
+        }).catch(err=>{
+            alert("Sesion Caducada")
+            window.location.href = "http://localhost:3000/auth";
+        });
+    }
+    useEffect(() => {
+        getUser()
+    }, [console.log()]);
 
 
     const cambiarContraseña = ()=>{
         //metodo para cambiar la contraseña del usuario este comprueba antes la antigua contraseña
        
-        if(document.querySelector("#antigua-contraseña").value!=localStorage.getItem("password")){
-            alert("Contraseña antigua incorrecta")
-        }else{
-            const new_password=document.querySelector("#nueva-contraseña").value
+            const newPassword=document.querySelector("#nueva-contraseña").value
+            const password=document.querySelector("#antigua-contraseña").value
             const user = {}
-            user.pasword = new_password
+            user.newPassword = newPassword
+            user.password = password
+
             console.log(user)
             axios({
-                method: "PUT",
-                url: "http://localhost/api/users/"+localStorage.getItem("user_id"),
+                method: "POST",
+                url: "http://localhost/api/users/password",
                 data: user,
                 headers: { "Content-Type": "application/json" , 'Authorization': 'Bearer ' + localStorage.getItem("token")},
               }).then(res=>{
                 console.log(res)
-                localStorage.removeItem("password")
-                localStorage.setItem("password",new_password)
                 alert("Contraseña Cambiada")
 
                 window.location.href = "http://localhost:3000/settings";
             }).catch((err)=>{
                 console.log(err)
+                alert("Contraseña Incorrecta")
             })
-        }
+        
     }
     return(
         <div className="setting-component-password">

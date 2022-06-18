@@ -12,10 +12,31 @@ import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
 
 
 const Products = () =>{
-    
-    
+        
     const [products, setProducts] = useState({});
     const [loanding, setloanding] = useState(true);
+    const [user, setUser] = useState();
+    let tempUser = {}
+
+    const getUser = async ()=>{
+        let config = {
+            headers: {
+                  'Authorization': 'Bearer ' + localStorage.getItem("token")
+            }
+        }
+        await axios.get(`http://localhost:/api/profile`,config)
+        .then(res => { 
+            
+            setUser(res.data[0])
+            tempUser = res.data[0]
+            getProducts()
+
+        }).catch(err=>{
+            console.log(err)
+            alert("Sesion Caducada")
+            window.location.href = "http://localhost:3000/auth";
+        });
+    }
 
     const getProducts = async () =>{
         //metodo para obetener los produtos de una cafeteria
@@ -24,36 +45,31 @@ const Products = () =>{
                   'Authorization': 'Bearer ' + localStorage.getItem("token")
             }
         }
-        await axios.get(`http://localhost:/api/cafes/${localStorage.getItem("cafe_id")}/products`,config)
+        await axios.get(`http://localhost:/api/cafes/${tempUser.user.id}/products`,config)
         .then(res => {
             setProducts(res.data)
             setloanding(false)
         }).catch(err=>{
-            console.log(err);
-            console.log(localStorage.getItem("cafe_id"))
-            localStorage.removeItem("token")
-            localStorage.removeItem("cafe_id");
-            localStorage.removeItem("name");
-            localStorage.removeItem("is_open");
-            localStorage.removeItem("location");
+            
             window.location.href = "http://localhost:3000/auth";
 
         })
     }
     
     useEffect(() => {
-       getProducts()
-    }, [console.log(products)]);
+        getUser()
+    }, [console.log()]);
 
     if(localStorage.getItem("token")===null){
         window.location.href = "http://localhost:3000/auth";
     }
         return(
             <>
-            <Header />
             {loanding ? 
             <div>cargando</div>
             :
+            <>
+            <Header props={user}/>
             <main className="main-product">
             <link rel="stylesheet" href="css/product.css"></link>
             <NewProduct></NewProduct>
@@ -65,9 +81,10 @@ const Products = () =>{
                 }) 
                 }
                 </section>    
-            </main>}
+            </main>
+            </>
+            }
             <Footer />
-
             </>
         );
 
