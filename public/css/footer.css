@@ -36,3 +36,20 @@
     font-size: 2em;
     margin-top: 7px;
 }
+@media (max-width: 1000px) {
+    .footer{
+        position:fixed;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        align-self: center;
+        justify-self: center;
+        border-top: 2px black solid;
+        border-right: 2px black solid;
+        border-left: 2px black solid;
+        height: 50px;
+        background-color: white ;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+}

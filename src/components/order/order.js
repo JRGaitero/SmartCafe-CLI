@@ -3,9 +3,10 @@ import { AiOutlineArrowDown } from "react-icons/ai";
 
 
 const getHtmlProducts = (products) => {
+     
 
     let html = "<section class='products'>"
-    let uniqueProducts = new Array()
+    let uniqueProducts = []
 
     products.forEach(function(product){
         if (uniqueProducts[product.name]===undefined){
@@ -24,7 +25,32 @@ const getHtmlProducts = (products) => {
     return html
 }
 
+const confirmProduct = (e) =>{
+    e.preventDefault()
+    const father = e.target.parentNode.parentNode.parentNode
+    const child = e.target.parentNode.parentNode
+    console.log("hola")
+
+    if(father.querySelector('#product-eliminated')==undefined){
+        father.insertAdjacentHTML(
+            "afterBegin",
+            "<div id='product-eliminated' class='product-eliminated'>Pedido Confirmado</div>"
+        )
+        function clear() {
+            setTimeout(clearRedBox, 2000);
+        }
+        const productEiminated = father.querySelector('#product-eliminated')
+        
+        clear()
+        function clearRedBox() {
+            father.removeChild(productEiminated)
+          }
+    }
+    
+    father.removeChild(child)
+} 
 const showProducts = (e) =>{
+    e.stopPropagation()
     e.preventDefault()
     if (e.target.parentNode.parentNode.className!=='section-order-products'){
         return
@@ -70,7 +96,6 @@ const showProducts = (e) =>{
         ]
     
         const  html = getHtmlProducts(mockproducts)
-        console.log(html)
         order.insertAdjacentHTML(
             "beforeBegin",
             html
@@ -84,6 +109,7 @@ const showProducts = (e) =>{
 
 }
 
+ 
  const OrderComponent = (props) =>{
     
     const [order] = React.useState(props.props)
@@ -98,6 +124,7 @@ const showProducts = (e) =>{
                 <a href="" onClick={showProducts} className="arrow">               
                     <AiOutlineArrowDown></AiOutlineArrowDown>
                 </a>
+                <a  href=""  className="confirm-product" onClick={confirmProduct}>Confirmar Pedido</a>
             </section>
         </div>)
  }
