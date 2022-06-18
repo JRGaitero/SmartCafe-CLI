@@ -1,31 +1,67 @@
 import React from "react";
 import OrderComponent from "../../components/order/order";
+import axios from "axios";
+import Header from '../../components/header/header';
+import Footer from '../../components/footer/footer';
+import { useState } from "react";
+import { useEffect } from "react";
+import { Navigate } from "react-router-dom";
 
-const mockOrder = {
-    id: 1,
-    student_id: 1,
-    amount : 4.99,
-    date: '22/05/2022',
-    is_completed: false,
-    payment_info: ""
-}
 
-const mockOrders = []
 const Orders = () =>{
     
-    for(let i = 0; i<15;i++){
-        mockOrders.push(mockOrder)
+    const [orders, setorders] = useState([]);
+    const [loanding, setloanding] = useState(true);
+
+    const getProducts = async () =>{
+        //metodo para obetner los pedidos asiociados a un cafe
+        let config = {
+            headers: {
+                  'Authorization': 'Bearer ' + localStorage.getItem("token")
+            }
+        }
+        await axios.get(`http://localhost:/api/cafes/${localStorage.getItem("cafe_id")}/orders`,config)
+        .then(res => {
+            setorders(res.data)
+            setloanding(false)
+        }).catch(err=>{
+            console.log(err)
+            localStorage.removeItem("token")
+            localStorage.removeItem("cafe_id");
+            localStorage.removeItem("name");
+            localStorage.removeItem("is_open");
+            localStorage.removeItem("location");
+
+            window.location.href = "http://localhost:3000/auth";
+        })
+    }
+    
+    useEffect(() => {
+       getProducts()
+    }, [console.log(orders)]);
+    if(localStorage.getItem("token")===null){
+        return <Navigate to='/Auth' replace={true} />;
     }
     return(
-        <>
-        <main className="main-order">
+        <>            
+        <Header />
         <link rel="stylesheet" href="css/order.css"></link>
-            <section className="order">
-                {mockOrders.map((item, index)=>
-                    <OrderComponent key={index} props ={item}/>
-                )}
-            </section>    
-        </main>
+
+        {loanding ? 
+            <div>cargando</div>
+            :
+            orders ?
+            <h2 className="no-products">No hay Pedidos todavia</h2>
+            :
+            <main className="main-order">
+                <section className="order">
+                    {orders.map((item, index)=>
+                        <OrderComponent key={index} props ={item}/>
+                    )}
+                </section>    
+            </main>
+        }
+        <Footer />
         </>
     )
 };

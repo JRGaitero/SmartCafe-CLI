@@ -1,0 +1,26 @@
+.main-cafe{
+    width: 1000px;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 100px;
+}
+.cafes{
+    width: 100%;
+    text-align: center;
+    align-items: center;
+}
+
+@media (max-width:800px) {
+    .main-cafe{
+        width: 100%;
+        text-align: center;
+        align-items: center;
+        margin-bottom: 100px;
+    }
+    .cafes{
+        width: 100%;
+        text-align: center;
+        align-items: center;
+    }
+
+}

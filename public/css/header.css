@@ -3,12 +3,20 @@
     padding: 0;
     margin: 0;
 }
-
-.header{
+.header-div{
     border: 1px black;
     display: flex;
+    right: 0;
+    left: 0;
     flex-direction: row;
-    justify-content: space-between;
+    align-self: center;
+    justify-content: space-evenly;
+}
+.header{
+    background-color: rgb(250, 235, 215,0.55) ;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
 }
 .header-logo{
     height :10em;

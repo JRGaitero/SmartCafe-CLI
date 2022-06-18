@@ -5,6 +5,10 @@
     align-items: center;
     margin-bottom: 60px;
 }
+.no-products{
+    text-align: center;
+    align-self: center;
+}
 .order{
     display: flex; 
     width: 50%;
