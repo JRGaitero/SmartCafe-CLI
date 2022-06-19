@@ -59,7 +59,19 @@ body div main section div form input.input-password{
     align-self: center;
     margin-right: 5px;
 }
+.form-logout{
 
+    flex-direction: column;
+
+    width: 20%;
+    border: 2px solid black;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}.input-logout{
+  
+}
 .submit-pencil{
 
     background: none;
@@ -181,8 +193,30 @@ body div main section div form input.input-password{
         width: 80%;
         padding: 0.5em;
     }
+    .form-logout{
+
+        flex-direction: column;
+    
+        width: 40%;
+        border: 2px solid black;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
 }
 @media (max-width:625px){
+    .form-logout{
+
+        flex-direction: column;
+    
+        width: 50%;
+        border: 2px solid black;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
     .setting-component {
         width: 100%;
         padding: 0.5em;

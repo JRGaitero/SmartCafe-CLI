@@ -1,22 +1,44 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
+import { useEffect } from "react";
+
 
 const NewProduct = () =>{
-
+    const [user, setUser] = useState();
     const [form, setform] = useState(false);
+
+    const getUser = async ()=>{
+        let config = {
+            headers: {
+                  'Authorization': 'Bearer ' + localStorage.getItem("token")
+            }
+        }
+        await axios.get(`http://localhost:/api/profile`,config)
+        .then(res => { 
+            setUser(res.data[0])
+
+        }).catch(err=>{
+            alert("Sesion Caducada")
+            window.location.href = "http://localhost:3000/auth";
+        });
+    }
+    useEffect(() => {
+        getUser()
+    }, [console.log()]);
 
     const crearProduct = (e) =>{
         //Creacion del nuevo producto recogiendo los datos introducidos en el formulario
         e.preventDefault()
+        console.log(user)
 
         let bodyFormData = new FormData();
         bodyFormData.append('price', document.querySelector("#price").value)
         bodyFormData.append('name',document.querySelector("#name").value)
         bodyFormData.append('description', document.querySelector("#description").value)
         bodyFormData.append('category', document.querySelector("#category").value)
-        bodyFormData.append("cafe_id",localStorage.getItem("cafe_id"))
-        bodyFormData.append("image",document.querySelector("#image").value)
+        bodyFormData.append("cafe_id",user.id)
+        bodyFormData.append("image",document.querySelector("#image").files[0])
 
         axios({
             method: "post",

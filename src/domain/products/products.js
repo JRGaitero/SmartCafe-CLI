@@ -45,7 +45,7 @@ const Products = () =>{
                   'Authorization': 'Bearer ' + localStorage.getItem("token")
             }
         }
-        await axios.get(`http://localhost:/api/cafes/${tempUser.user.id}/products`,config)
+        await axios.get(`http://localhost:/api/cafes/${tempUser.id}/products`,config)
         .then(res => {
             setProducts(res.data)
             setloanding(false)
