@@ -3,6 +3,7 @@ import Settings from "./domain/settings/settings";
 import Products  from "./domain/products/products";
 import Cafes  from "./domain/cafes/cafes";
 import CafeProducts  from "./domain/cafeProducts/cafeProducts";
+import SettingsStudent from "./domain/settingsStudent/settingsStudent";
 
 import './App.css';
 import { Navigate } from "react-router-dom";
@@ -20,6 +21,7 @@ function App() {
             <Route path="/orders" element={<Orders />}/>
             <Route path="/cafes" element={<Cafes />}/>
             <Route path="/settings" element={<Settings />}/>
+            <Route path="/settings-student" element={<SettingsStudent />}/>
             <Route path="/cafe-products" element={<CafeProducts />}/>
             <Route path="/products" element={<Products />}/>
             <Route path="/auth" element={<Auth />}/>

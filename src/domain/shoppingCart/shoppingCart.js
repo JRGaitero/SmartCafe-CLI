@@ -51,7 +51,6 @@ const ShoppingCart = () => {
         amount += product.price
       })
 
-      user = res.data[0]
       let bodyFormData = new FormData()
       bodyFormData.append('amount', amount)
       bodyFormData.append('date', new Date().toISOString().split('T')[0])
