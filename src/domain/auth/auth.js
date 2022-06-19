@@ -84,7 +84,7 @@ const Auth = ()=>{
         bodyFormData.append('password',document.querySelector("#password").value)
         bodyFormData.append('phoneNumber', document.querySelector("#phoneNumber").value)
         if(document.querySelector("#profile_pic").value){
-            bodyFormData.append('profile_pic', document.querySelector("#profile_pic").file[0])
+            bodyFormData.append('profile_pic', document.querySelector("#profile_pic").files[0])
         }
         bodyFormData.append('role',document.querySelector("#role").value)
 
