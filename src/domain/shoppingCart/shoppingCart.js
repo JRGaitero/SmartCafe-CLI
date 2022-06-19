@@ -98,6 +98,9 @@ const ShoppingCart = () => {
         localStorage.getItem('cart') ?
         <>
         <Header props={user}/>
+        <link rel="stylesheet" href="css/shoping-cart.css"></link>
+        <link rel="stylesheet" href="css/product.css"></link>
+
           <main className="main-shoppingCart">
             <section className="products">
               {

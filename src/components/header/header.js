@@ -2,7 +2,6 @@ import React from "react";
 
 const Header = (props) => {
     const [user] = React.useState(props.props)
-    console.log(user)
 
     //Creacion heeader para cafes estemuestra el logo de la app y el nombre del cafe
 
