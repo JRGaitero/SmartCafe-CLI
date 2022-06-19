@@ -138,8 +138,13 @@ const Auth = ()=>{
             headers: { "Content-Type": "multipart/form-data" },
           }).then(res=>{
             localStorage.setItem("token",res.data.access_token);
-            window.location.href="http://localhost:3000/products";
+            if(res.data.role == "student"){
+                window.location.href="http://localhost:3000/cafes";
 
+            }else{
+                window.location.href="http://localhost:3000/products";
+            
+            }          
 
           })
     }

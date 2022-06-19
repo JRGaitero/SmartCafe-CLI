@@ -13,10 +13,14 @@ const CafeComponent = (props) => {
   const showProducts = (e)=>{
 
     if(show){
+      const arrow = document.querySelector("#arrow-cafes")
+      arrow.className = "section-go-to" 
       setShow(false)
       return
     }
     e.preventDefault()
+    const arrow = document.querySelector("#arrow-cafes")
+    arrow.className = "section-go-to-2" 
     let config = {
       headers: {
             'Authorization': 'Bearer ' + localStorage.getItem("token")
@@ -39,10 +43,10 @@ const CafeComponent = (props) => {
       <link rel="stylesheet" href="css/cafe-product.css"></link>
     <div className="cafe">
       <section className="section-cafe">
-        <h2>{getCafe.name}</h2>
-        <p>{getCafe.location}</p>
+        <h2>Cafeteria: {getCafe.name}</h2>
+        <p>Ubicacion: {getCafe.location}</p>
       </section>
-      <section className="section-go-to">
+      <section>
         
         { 
         show 
@@ -54,7 +58,7 @@ const CafeComponent = (props) => {
                 <div></div>
 
           }
-          <a onClick={showProducts} >
+          <a  className="section-go-to" id="arrow-cafes" onClick={showProducts} >
           <AiOutlineArrowRight></AiOutlineArrowRight>
         </a>
       </section>

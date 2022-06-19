@@ -1,0 +1,31 @@
+.main-shoppingCart{
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 60px;
+    
+}
+
+section.products{
+    width: 30%;
+}
+
+@media(max-width: 1350px){
+    section.products{ 
+        width: 45%;
+    }
+}
+@media (max-width: 800px){
+    section.products{ 
+        width: 80%;
+    }
+}
+@media (max-width: 600px){
+    section.products{ 
+        width: 100%;
+    }
+}
