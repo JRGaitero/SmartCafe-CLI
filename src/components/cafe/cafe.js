@@ -22,8 +22,10 @@ const CafeComponent = (props) => {
             'Authorization': 'Bearer ' + localStorage.getItem("token")
       }
   }
+  console.log(getCafe.id)
     axios.get(`http://localhost:/api/cafes/${getCafe.id}/products`,config)
     .then(res => {
+        console.log(res)
         setProducts(res.data)
         setShow(true)
 
