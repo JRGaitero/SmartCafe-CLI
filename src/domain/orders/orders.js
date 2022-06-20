@@ -22,7 +22,10 @@ const Orders = () =>{
             }
         }
         await axios.get(`http://localhost:/api/profile`,config)
-        .then(res => { 
+        .then(res => {
+            if (res.data[0].user.role !== 'cafe') {
+                window.location.href="http://localhost:3000/cafes"
+            }
             setUser(res.data[0])
             tempUser = res.data[0]
             getProducts()

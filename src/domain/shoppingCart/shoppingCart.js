@@ -19,8 +19,10 @@ const ShoppingCart = () => {
           }
       }
       await axios.get(`http://localhost/api/profile`,config)
-      .then(res => { 
-          
+      .then(res => {
+        if (res.data[0].user.role !== 'student') {
+          window.location.href="http://localhost:3000/products"
+        }
           setUser(res.data[0])
           tempUser = res.data[0]
           setLoading(false)
