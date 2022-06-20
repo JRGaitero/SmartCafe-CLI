@@ -10,6 +10,7 @@ const ShoppingCart = () => {
   const [loading, setLoading] = useState(true)
   const [productMode] = useState('delete')
   const [user, setUser] = useState();
+  const [headerMode] = useState('student')
   let tempUser = {}
 
   const getUser = async ()=>{
@@ -123,7 +124,7 @@ const ShoppingCart = () => {
       </>
     }
       
-      <Footer/>
+      <Footer mode={headerMode}/>
 
     </>
   )

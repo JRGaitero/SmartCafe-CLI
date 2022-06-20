@@ -13,6 +13,7 @@ const Cafes = () => {
   const [loading, setLoading] = useState(true)
   const [productMode] = useState('add')
   const [user, setUser] = useState();
+  const [headerMode] = useState('student')
   let tempUser = {}
 
   const getUser = async ()=>{
@@ -81,7 +82,7 @@ const Cafes = () => {
           </main>
           </>
       }
-      <Footer />
+      <Footer mode={headerMode} />
     </>
   )
 

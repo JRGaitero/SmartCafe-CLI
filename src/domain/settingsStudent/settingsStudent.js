@@ -13,6 +13,7 @@ const SettingsStudent = () => {
 
   const [user, setUser] = useState();
   const [loading, setloading] = useState(true);
+  const [headerMode] = useState('student')
 
   const getUser = async ()=>{
     let config = {
@@ -82,7 +83,7 @@ const SettingsStudent = () => {
             </main>
           </>
       }
-      <Footer/>
+      <Footer mode={headerMode}/>
     </>
   )
 }
