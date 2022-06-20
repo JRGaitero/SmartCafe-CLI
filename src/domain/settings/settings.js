@@ -16,6 +16,7 @@ const Settings = () =>{
     //metodo para comprobar que estas logeado
     const [user, setUser] = useState();
     const [loanding, setloanding] = useState(true);
+    const [headerMode] = useState('cafe')
 
     const getUser = async ()=>{
         let config = {
@@ -84,7 +85,7 @@ const Settings = () =>{
         </main>
         </>
         }
-        <Footer />
+        <Footer mode={headerMode}/>
         </>
         
     )
