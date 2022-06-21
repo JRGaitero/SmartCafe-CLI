@@ -54,12 +54,6 @@ const ShoppingCart = () => {
         productIds = productIds.slice(0, -1)
         amount += product.price
       })
-<<<<<<< HEAD
-      console.log(productIds)
-      debugger;
-=======
-
->>>>>>> 6b394563127ba880016c3adcf2fbca931bfae368
       let bodyFormData = new FormData()
       bodyFormData.append('amount', amount)
       bodyFormData.append('date', new Date().toISOString().split('T')[0])
