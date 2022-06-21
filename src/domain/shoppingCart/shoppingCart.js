@@ -50,11 +50,16 @@ const ShoppingCart = () => {
       headers: {'Authorization': 'Bearer ' + localStorage.getItem("token")},
     }).then( res => {
       JSON.parse(localStorage.getItem('cart')).forEach( product => {
-        productIds = productIds.concat(product.id)
+        productIds = productIds.concat(product.id + '-')
+        productIds = productIds.slice(0, -1)
         amount += product.price
       })
+<<<<<<< HEAD
       console.log(productIds)
       debugger;
+=======
+
+>>>>>>> 6b394563127ba880016c3adcf2fbca931bfae368
       let bodyFormData = new FormData()
       bodyFormData.append('amount', amount)
       bodyFormData.append('date', new Date().toISOString().split('T')[0])

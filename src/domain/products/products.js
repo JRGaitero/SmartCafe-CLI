@@ -80,7 +80,7 @@ const Products = () =>{
                     
                 {
                 products.map((item,index)=>{
-                    return <ProductComponent key={index} props ={item} ></ProductComponent>
+                    return <ProductComponent key={index} props ={item} mode={null}></ProductComponent>
                 }) 
                 }
                 </section>    
