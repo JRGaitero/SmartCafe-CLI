@@ -1,10 +1,12 @@
 import React from "react"
 import { AiOutlineArrowDown } from "react-icons/ai";
+import axios from "axios";
 
  
  const OrderComponent = (props) =>{
     
     const [getOrder] = React.useState(props.props)
+
 
     const getHtmlProducts = (products) => {
 
@@ -51,6 +53,19 @@ import { AiOutlineArrowDown } from "react-icons/ai";
             function clearRedBox() {
                 father.removeChild(productEiminated)
             }
+            const changeOrder = {
+                is_completed:1
+            }
+            axios({
+                method: "PUT",
+                url: "http://localhost/api/orders/"+getOrder.id,
+                data: changeOrder,
+                headers: { "Content-Type": "application/json" , 'Authorization': 'Bearer ' + localStorage.getItem("token")},
+              }).then(res=>{
+                window.location.href = "http://localhost:3000/orders";
+            }).catch((err)=>{
+                console.log(err)
+            })
         }
         
         father.removeChild(child)

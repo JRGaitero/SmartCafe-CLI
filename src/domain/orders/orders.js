@@ -78,7 +78,10 @@ const Orders = () =>{
             <main className="main-order">
                 <section className="order">
                     {orders.map((item, index)=>
+                        !item.is_completed ?
                         <OrderComponent key={index} props ={item}/>
+                        :
+                        <div></div>
                     )}
                 </section>    
             </main>
