@@ -114,7 +114,10 @@ const ShoppingCart = () => {
           </main>
           </>
           :
+          <>
+          <Header props={user}/>
           <div>No tienes productos en el carrito</div>
+          </>
       }
       </>
     }
