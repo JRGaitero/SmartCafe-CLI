@@ -50,7 +50,8 @@ const ShoppingCart = () => {
       headers: {'Authorization': 'Bearer ' + localStorage.getItem("token")},
     }).then( res => {
       JSON.parse(localStorage.getItem('cart')).forEach( product => {
-        productIds = productIds.concat(product.id)
+        productIds = productIds.concat(product.id + '-')
+        productIds = productIds.slice(0, -1)
         amount += product.price
       })
 
