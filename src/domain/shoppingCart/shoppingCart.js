@@ -19,10 +19,10 @@ const ShoppingCart = () => {
                 'Authorization': 'Bearer ' + localStorage.getItem("token")
           }
       }
-      await axios.get(`http://localhost/api/profile`,config)
+      await axios.get(`http://192.168.243.36/api/profile`,config)
       .then(res => {
         if (res.data[0].user.role !== 'student') {
-          window.location.href="http://localhost:3000/products"
+          window.location.href="http://192.168.243.36:3000/products"
         }
           setUser(res.data[0])
           tempUser = res.data[0]
@@ -46,7 +46,7 @@ const ShoppingCart = () => {
 
     axios({
       method: 'get',
-      url: 'http://localhost/api/profile',
+      url: 'http://192.168.243.36/api/profile',
       headers: {'Authorization': 'Bearer ' + localStorage.getItem("token")},
     }).then( res => {
       JSON.parse(localStorage.getItem('cart')).forEach( product => {
@@ -64,12 +64,12 @@ const ShoppingCart = () => {
 
       axios({
         method: 'post',
-        url: 'http://localhost/api/orders',
+        url: 'http://192.168.243.36/api/orders',
         data: bodyFormData,
         headers: { "Content-Type": "multipart/form-data" , 'Authorization': 'Bearer ' + localStorage.getItem("token")}
       }).then( res => {
         localStorage.removeItem('cart')
-        window.location.href = "http://localhost:3000/cafes"
+        window.location.href = "http://192.168.243.36:3000/cafes"
       })
     })
 

@@ -14,12 +14,12 @@ const SettingComponentImage = (props) =>{
                   'Authorization': 'Bearer ' + localStorage.getItem("token")
             }
         }
-        await axios.get(`http://localhost:/api/profile`,config)
+        await axios.get(`http://192.168.243.36:/api/profile`,config)
         .then(res => { 
             setUser(res.data[0])
         }).catch(err=>{
             alert("Sesion Caducada")
-            window.location.href = "http://localhost:3000/auth";
+            window.location.href = "http://192.168.243.36:3000/auth";
         });
     }
     useEffect(() => {
@@ -35,11 +35,11 @@ const SettingComponentImage = (props) =>{
             changedUser._method = "PUT"
             axios({
                 method: "POST",
-                url: "http://localhost/api/users/"+user.user_id,
+                url: "http://192.168.243.36/api/users/"+user.user_id,
                 data: changedUser,
                 headers: { "Content-Type": "multipart/form-data" , 'Authorization': 'Bearer ' + localStorage.getItem("token")},
               }).then(res=>{
-                window.location.href = "http://localhost:3000/settings";
+                window.location.href = "http://192.168.243.36:3000/settings";
             }).catch((err)=>{
                 console.log(err)
             })

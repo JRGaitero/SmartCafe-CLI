@@ -15,7 +15,7 @@ const Header = (props) => {
                 </ul>
                 {
                 user.user.profile_pic ===undefined ?
-                <ul className="header-ul"  style={{backgroundImage: `url(http://localhost${user.user.profile_pic})`}}>
+                <ul className="header-ul"  style={{backgroundImage: `url(http://192.168.243.36${user.user.profile_pic})`}}>
                     <div >
                             <h1 className="header-name">{user.name}</h1>
                             <h2 className="header-location">{user.location}</h2>

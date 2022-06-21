@@ -58,11 +58,11 @@ import axios from "axios";
             }
             axios({
                 method: "PUT",
-                url: "http://localhost/api/orders/"+getOrder.id,
+                url: "http://192.168.243.36/api/orders/"+getOrder.id,
                 data: changeOrder,
                 headers: { "Content-Type": "application/json" , 'Authorization': 'Bearer ' + localStorage.getItem("token")},
               }).then(res=>{
-                window.location.href = "http://localhost:3000/orders";
+                window.location.href = "http://192.168.243.36:3000/orders";
             }).catch((err)=>{
                 console.log(err)
             })

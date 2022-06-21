@@ -22,10 +22,10 @@ const Cafes = () => {
                 'Authorization': 'Bearer ' + localStorage.getItem("token")
           }
       }
-      await axios.get(`http://localhost:/api/profile`,config)
+      await axios.get(`http://192.168.243.36:/api/profile`,config)
       .then(res => {
         if (res.data[0].user.role !== 'student') {
-          window.location.href="http://localhost:3000/products"
+          window.location.href="http://192.168.243.36:3000/products"
         }
           setUser(res.data[0])
           tempUser = res.data[0]
@@ -34,7 +34,7 @@ const Cafes = () => {
       }).catch(err=>{
           console.log(err)
           alert("Sesion Caducada")
-          window.location.href = "http://localhost:3000/auth";
+          window.location.href = "http://192.168.243.36:3000/auth";
       });
   }
   const getCafes = async () => {
@@ -43,7 +43,7 @@ const Cafes = () => {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
       }
     }
-    await axios.get('http://localhost/api/cafes', config)
+    await axios.get('http://192.168.243.36/api/cafes', config)
       .then(res => {
         setCafes(res.data)
         setLoading(false)

@@ -27,7 +27,7 @@ const CafeComponent = (props) => {
       }
   }
   console.log(getCafe.id)
-    axios.get(`http://localhost:/api/cafes/${getCafe.id}/products`,config)
+    axios.get(`http://192.168.243.36:/api/cafes/${getCafe.id}/products`,config)
     .then(res => {
         console.log(res)
         setProducts(res.data)

@@ -17,7 +17,7 @@ const CafeProducts = (props) => {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
       }
     }
-    await axios.get(`http://localhost/api/cafes/${props.props.id}/products`, config)
+    await axios.get(`http://192.168.243.36/api/cafes/${props.props.id}/products`, config)
       .then(res => {
         setCafeProducts(res.data)
         setLoading(false)

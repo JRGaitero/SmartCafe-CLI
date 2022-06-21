@@ -14,12 +14,12 @@ const SettingStudentComponent = (props) => {
         'Authorization': 'Bearer ' + localStorage.getItem("token")
       }
     }
-    await axios.get(`http://localhost:/api/profile`, config)
+    await axios.get(`http://192.168.243.36:/api/profile`, config)
       .then(res => {
         setUser(res.data[0])
       }).catch(err => {
         alert("Sesion Caducada")
-        window.location.href = "http://localhost:3000/auth";
+        window.location.href = "http://192.168.243.36:3000/auth";
       });
   }
   useEffect(() => {
@@ -35,11 +35,11 @@ const SettingStudentComponent = (props) => {
       changedUser.course = user.course
       axios({
         method: "PUT",
-        url: "http://localhost/api/students/" + user.id,
+        url: "http://192.168.243.36/api/students/" + user.id,
         data: changedUser,
         headers: {"Content-Type": "application/json", 'Authorization': 'Bearer ' + localStorage.getItem("token")},
       }).then(res => {
-        window.location.href = "http://localhost:3000/settings-student";
+        window.location.href = "http://192.168.243.36:3000/settings-student";
       }).catch((err) => {
         console.log(err)
       })
@@ -52,11 +52,11 @@ const SettingStudentComponent = (props) => {
       changedUser.course = user.course
       axios({
         method: "PUT",
-        url: "http://localhost/api/students/" + localStorage.getItem("cafe_id"),
+        url: "http://192.168.243.36/api/students/" + localStorage.getItem("cafe_id"),
         data: changedUser,
         headers: {"Content-Type": "application/json", 'Authorization': 'Bearer ' + localStorage.getItem("token")},
       }).then(res => {
-        window.location.href = "http://localhost:3000/settings-student";
+        window.location.href = "http://192.168.243.36:3000/settings-student";
       }).catch((err) => {
 
       })
@@ -69,11 +69,11 @@ const SettingStudentComponent = (props) => {
       changedUser.course = new_course
       axios({
         method: "PUT",
-        url: "http://localhost/api/students/" + localStorage.getItem("cafe_id"),
+        url: "http://192.168.243.36/api/students/" + localStorage.getItem("cafe_id"),
         data: changedUser,
         headers: {"Content-Type": "application/json", 'Authorization': 'Bearer ' + localStorage.getItem("token")},
       }).then(res => {
-        window.location.href = "http://localhost:3000/settings-student";
+        window.location.href = "http://192.168.243.36:3000/settings-student";
       }).catch((err) => {
 
       })

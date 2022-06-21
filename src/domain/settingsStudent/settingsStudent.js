@@ -21,17 +21,17 @@ const SettingsStudent = () => {
         'Authorization': 'Bearer ' + localStorage.getItem("token")
       }
     }
-    await axios.get(`http://localhost:/api/profile`,config)
+    await axios.get(`http://192.168.243.36:/api/profile`,config)
       .then(res => {
         if (res.data[0].user.role !== 'student') {
-          window.location.href="http://localhost:3000/products"
+          window.location.href="http://192.168.243.36:3000/products"
         }
         setUser(res.data[0])
         setloading(false)
 
       }).catch(err=>{
         alert("Sesion Caducada")
-        window.location.href = "http://localhost:3000/auth";
+        window.location.href = "http://192.168.243.36:3000/auth";
       });
   }
   useEffect(() => {
@@ -44,13 +44,13 @@ const SettingsStudent = () => {
         'Authorization': 'Bearer ' + localStorage.getItem("token")
       }
     }
-    axios.get(`http://localhost:/api/logout`,config)
+    axios.get(`http://192.168.243.36:/api/logout`,config)
       .then(res => {
         localStorage.removeItem("token")
-        window.location.href = "http://localhost:3000/auth";
+        window.location.href = "http://192.168.243.36:3000/auth";
       }).catch(err=>{
       localStorage.removeItem("token")
-      window.location.href = "http://localhost:3000/auth";
+      window.location.href = "http://192.168.243.36:3000/auth";
     });
 
   }

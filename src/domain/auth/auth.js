@@ -14,7 +14,7 @@ const Auth = ()=>{
 
 
     const getSchools = async () =>{
-        await axios.get(`http://localhost:/api/schools/`)
+        await axios.get(`http://192.168.243.36:/api/schools/`)
         .then(res => {
             setSchools(res.data)
         })
@@ -44,7 +44,7 @@ const Auth = ()=>{
 
         axios({
             method: "post",
-            url: "http://localhost/api/register",
+            url: "http://192.168.243.36/api/register",
             data: bodyFormData,
             headers: { "Content-Type": "multipart/form-data" },
           }).then(res=>{
@@ -60,7 +60,7 @@ const Auth = ()=>{
             bodyFormData.append('is_open',document.querySelector("#is_open").value)
             axios({
                 method: "post",
-                url: "http://localhost/api/cafes",
+                url: "http://192.168.243.36/api/cafes",
                 data: bodyFormData,
                 headers: { "Content-Type": "multipart/form-data",'Authorization': 'Bearer ' + localStorage.getItem("token") },
             }).then(res=>{
@@ -71,7 +71,7 @@ const Auth = ()=>{
                 //localStorage.setItem('password', document.querySelector("#password").value)
 
 
-                window.location.href="http://localhost:3000/products";
+                window.location.href="http://192.168.243.36:3000/products";
 
             })
             })
@@ -90,7 +90,7 @@ const Auth = ()=>{
 
         axios({
             method: "post",
-            url: "http://localhost/api/register",
+            url: "http://192.168.243.36/api/register",
             data: bodyFormData,
             headers: { "Content-Type": "multipart/form-data" },
           }).then(res=>{
@@ -109,14 +109,14 @@ const Auth = ()=>{
 
             axios({
                 method: "post",
-                url: "http://localhost/api/students",
+                url: "http://192.168.243.36/api/students",
                 data: bodyFormData,
                 headers: { "Content-Type": "multipart/form-data",'Authorization': 'Bearer ' + localStorage.getItem("token") },
             }).then(res=>{
                 //localStorage.setItem("name", document.querySelector("#name").value)
                 //localStorage.setItem("student_id",res.data)
 
-                window.location.href="http://localhost:3000/cafes";
+                window.location.href="http://192.168.243.36:3000/cafes";
             })
             })
 
@@ -133,16 +133,16 @@ const Auth = ()=>{
    
         axios({
             method: "post",
-            url: "http://localhost/api/login",
+            url: "http://192.168.243.36/api/login",
             data: bodyFormData,
             headers: { "Content-Type": "multipart/form-data" },
           }).then(res=>{
             localStorage.setItem("token",res.data.access_token);
             if(res.data.role == "student"){
-                window.location.href="http://localhost:3000/cafes";
+                window.location.href="http://192.168.243.36:3000/cafes";
 
             }else{
-                window.location.href="http://localhost:3000/products";
+                window.location.href="http://192.168.243.36:3000/products";
             
             }          
 

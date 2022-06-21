@@ -14,12 +14,12 @@ const SettingComponent = (props) =>{
                   'Authorization': 'Bearer ' + localStorage.getItem("token")
             }
         }
-        await axios.get(`http://localhost:/api/profile`,config)
+        await axios.get(`http://192.168.243.36:/api/profile`,config)
         .then(res => { 
             setUser(res.data[0])
         }).catch(err=>{
             alert("Sesion Caducada")
-            window.location.href = "http://localhost:3000/auth";
+            window.location.href = "http://192.168.243.36:3000/auth";
         });
     }
     useEffect(() => {
@@ -36,11 +36,11 @@ const SettingComponent = (props) =>{
             changedUser.is_open =user.is_open
             axios({
                 method: "PUT",
-                url: "http://localhost/api/cafes/"+user.id,
+                url: "http://192.168.243.36/api/cafes/"+user.id,
                 data: changedUser,
                 headers: { "Content-Type": "application/json" , 'Authorization': 'Bearer ' + localStorage.getItem("token")},
               }).then(res=>{
-                window.location.href = "http://localhost:3000/settings";
+                window.location.href = "http://192.168.243.36:3000/settings";
             }).catch((err)=>{
                 console.log(err)
             })
@@ -53,11 +53,11 @@ const SettingComponent = (props) =>{
             changedUser.is_open =user.is_open
             axios({
                 method: "PUT",
-                url: "http://localhost/api/cafes/"+localStorage.getItem("cafe_id"),
+                url: "http://192.168.243.36/api/cafes/"+localStorage.getItem("cafe_id"),
                 data: changedUser,
                 headers: { "Content-Type": "application/json" , 'Authorization': 'Bearer ' + localStorage.getItem("token")},
               }).then(res=>{
-                window.location.href = "http://localhost:3000/settings";
+                window.location.href = "http://192.168.243.36:3000/settings";
             }).catch((err)=>{
 
             })

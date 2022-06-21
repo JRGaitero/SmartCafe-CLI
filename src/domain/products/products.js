@@ -25,10 +25,10 @@ const Products = () =>{
                   'Authorization': 'Bearer ' + localStorage.getItem("token")
             }
         }
-        await axios.get(`http://localhost:/api/profile`,config)
+        await axios.get(`http://192.168.243.36:/api/profile`,config)
         .then(res => {
             if (res.data[0].user.role !== 'cafe') {
-                window.location.href="http://localhost:3000/cafes"
+                window.location.href="http://192.168.243.36:3000/cafes"
             }
             setUser(res.data[0])
             tempUser = res.data[0]
@@ -37,7 +37,7 @@ const Products = () =>{
         }).catch(err=>{
             console.log(err)
             alert("Sesion Caducada")
-            window.location.href = "http://localhost:3000/auth";
+            window.location.href = "http://192.168.243.36:3000/auth";
         });
     }
 
@@ -48,13 +48,13 @@ const Products = () =>{
                   'Authorization': 'Bearer ' + localStorage.getItem("token")
             }
         }
-        await axios.get(`http://localhost:/api/cafes/${tempUser.id}/products`,config)
+        await axios.get(`http://192.168.243.36:/api/cafes/${tempUser.id}/products`,config)
         .then(res => {
             setProducts(res.data)
             setloanding(false)
         }).catch(err=>{
             
-            window.location.href = "http://localhost:3000/auth";
+            window.location.href = "http://192.168.243.36:3000/auth";
 
         })
     }
@@ -64,7 +64,7 @@ const Products = () =>{
     }, [console.log()]);
 
     if(localStorage.getItem("token")===null){
-        window.location.href = "http://localhost:3000/auth";
+        window.location.href = "http://192.168.243.36:3000/auth";
     }
         return(
             <>
