@@ -146,7 +146,9 @@ const Auth = ()=>{
             
             }          
 
-          })
+          }).catch( err => {
+            alert('Email y/o contraseña incorrectos')
+        })
     }
     return(
         <>
