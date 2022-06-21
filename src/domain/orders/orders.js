@@ -15,6 +15,7 @@ const Orders = () =>{
     const [user, setUser] = useState();
     const [headerMode] = useState('cafe')
     let tempUser = {}
+    let tempOrders = []
 
     const getUser = async ()=>{
         let config = {
@@ -49,13 +50,15 @@ const Orders = () =>{
             setloanding(false)
         }).catch(err=>{
             console.log(err)
-            window.location.href = "http://localhost:3000/auth";
+            //window.location.href = "http://localhost:3000/auth";
         })
     }
+  
     
     useEffect(() => {
         getUser()
-    }, [console.log()]);
+    }, []);
+  
 
     if(localStorage.getItem("token")===null){
         return <Navigate to='/Auth' replace={true} />;
@@ -69,7 +72,7 @@ const Orders = () =>{
             <Header props={user}/>
             <link rel="stylesheet" href="css/order.css"></link>
             {
-            orders ?
+            !orders ?
             <h2 className="no-products">No hay Pedidos todavia</h2>
             :
             <main className="main-order">

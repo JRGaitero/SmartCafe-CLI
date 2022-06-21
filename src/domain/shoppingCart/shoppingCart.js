@@ -51,9 +51,10 @@ const ShoppingCart = () => {
     }).then( res => {
       JSON.parse(localStorage.getItem('cart')).forEach( product => {
         productIds = productIds.concat(product.id + '-')
-        productIds = productIds.slice(0, -1)
         amount += product.price
       })
+      productIds = productIds.slice(0, -1)
+      console.log(productIds)
       let bodyFormData = new FormData()
       bodyFormData.append('amount', amount)
       bodyFormData.append('date', new Date().toISOString().split('T')[0])
