@@ -43,7 +43,7 @@ const Orders = () =>{
                   'Authorization': 'Bearer ' + localStorage.getItem("token")
             }
         }
-        await axios.get(`http://localhost:/api/cafes/${localStorage.getItem("cafe_id")}/orders`,config)
+        await axios.get(`http://localhost:/api/cafes/${tempUser.id}/orders`,config)
         .then(res => {
             setorders(res.data)
             setloanding(false)
