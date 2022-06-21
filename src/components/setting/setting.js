@@ -53,7 +53,7 @@ const SettingComponent = (props) =>{
             changedUser.is_open =user.is_open
             axios({
                 method: "PUT",
-                url: "http://localhost/api/cafes/"+localStorage.getItem("cafe_id"),
+                url: "http://localhost/api/cafes/"+user.id,
                 data: changedUser,
                 headers: { "Content-Type": "application/json" , 'Authorization': 'Bearer ' + localStorage.getItem("token")},
               }).then(res=>{

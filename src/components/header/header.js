@@ -20,6 +20,7 @@ const Header = (props) => {
                             <h1 className="header-name">{user.name}</h1>
                             <h2 className="header-location">{user.location}</h2>
                             <h2 className="header-location">{user.surname}</h2>
+                            <h2 className="header-location">{user.course}</h2>
 
                     </div>
                     </ul>
@@ -29,6 +30,7 @@ const Header = (props) => {
                             <h1 className="header-name">{user.name}</h1>
                             <h2 className="header-location">{user.location}</h2>
                             <h2 className="header-location">{user.surname}</h2>
+                            <h2 className="header-location">{user.course}</h2>
                     </div>
                 </ul>
                 }                  

@@ -52,7 +52,7 @@ const SettingStudentComponent = (props) => {
       changedUser.course = user.course
       axios({
         method: "PUT",
-        url: "http://localhost/api/students/" + localStorage.getItem("cafe_id"),
+        url: "http://localhost/api/students/" +user.id,
         data: changedUser,
         headers: {"Content-Type": "application/json", 'Authorization': 'Bearer ' + localStorage.getItem("token")},
       }).then(res => {
@@ -69,7 +69,7 @@ const SettingStudentComponent = (props) => {
       changedUser.course = new_course
       axios({
         method: "PUT",
-        url: "http://localhost/api/students/" + localStorage.getItem("cafe_id"),
+        url: "http://localhost/api/students/" + user.id,
         data: changedUser,
         headers: {"Content-Type": "application/json", 'Authorization': 'Bearer ' + localStorage.getItem("token")},
       }).then(res => {

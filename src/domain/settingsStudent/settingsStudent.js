@@ -65,11 +65,11 @@ const SettingsStudent = () => {
             <main className="main-settings">
               <link rel="stylesheet" href="css/setting.css"/>
               <section className="settings">
-                <SettingStudentComponent props ={{name: 'Nombre', url: "url:name"}}/>
-                <SettingStudentComponent props ={{name: 'Apellido', url: "url:Apellido"}}/>
-                <SettingStudentComponent props ={{name: 'Curso', url: "url:Curso"}}/>
-                <SettingStudentComponentPassword props ={{url: "url:contraseña"}}/>
-                <SettingStudentComponentImage  props ={{url: "url:image"}}/>
+                <SettingStudentComponent props ={{name: 'Nombre', url: "student"}}/>
+                <SettingStudentComponent props ={{name: 'Apellido', url: "student"}}/>
+                <SettingStudentComponent props ={{name: 'Curso', url: "student"}}/>
+                <SettingStudentComponentPassword props ={{url: "student"}}/>
+                <SettingStudentComponentImage  props ={{url: "student"}}/>
 
                 <div className="setting-component">
                   <form className="form-logout"  action="" method="POST" >
